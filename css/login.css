@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #dde2e6;
+    /* Linea UIX neumorfica */
+    color: #4c5565;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 1rem;
+    overflow: hidden;
+}
+
+:root {
+    --primary: #00e5ff;
+    /* Cyan neon */
+    --secondary: #ff005c;
+    /* Pink neon */
+    --angle: 0deg;
+    --spin-speed: 3s;
+    --card-bg: #1e1f26;
+    /* Fondo oscuro exclusivo para el panel central de login */
+}
+
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.login-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    z-index: 1;
+}
+
+.login-card {
+    position: relative;
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+/* El efecto visual solicitado: borde neón giratorio */
+.login-card::before,
+.login-card::after {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    /* Borde de 6px exterior */
+    border-radius: 26px;
+    /* 20px (card) + 6px */
+    background: conic-gradient(from var(--angle),
+            transparent 0%,
+            var(--secondary) 25%,
+            transparent 50%,
+            var(--primary) 75%,
+            transparent 100%);
+    z-index: -1;
+    animation: spin var(--spin-speed) linear infinite;
+}
+
+.login-card::after {
+    filter: blur(25px);
+    /* Efecto de resplandor (glow) */
+    opacity: 0.8;
+}
+
+@keyframes spin {
+    from {
+        --angle: 0deg;
+    }
+
+    to {
+        --angle: 360deg;
+    }
+}
+
+/* Integración visual */
+.login-header {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    letter-spacing: 0.1em;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.form-control {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.25);
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1rem;
+    background: transparent;
+    color: #fff;
+    border: 2px solid var(--primary);
+    border-radius: 30px;
+    font-weight: 800;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2) inset;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: var(--primary);
+    color: #000;
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
+    transform: translateY(-2px);
+}
