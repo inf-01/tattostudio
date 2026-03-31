@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control - Tatto Studio</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="admin-wrapper">
+        <header>
+            <div class="title-card">
+                <h1><i class="fa-solid fa-database"></i> Panel Tatto Studio</h1>
+            </div>
+            <button id="logoutBtn" class="logout-btn">
+                <i class="fa-solid fa-power-off"></i> Salir
+            </button>
+        </header>
+
+        <section class="dashboard-container">
+            <div class="controls">
+                <h3>Últimos Registros (Google Sheets)</h3>
+                <button id="refreshBtn" class="refresh-btn">
+                    <i class="fa-solid fa-rotate-right"></i> Actualizar
+                </button>
+            </div>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Teléfono</th>
+                            <th>Idea / Mensaje</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dataTable">
+                        <!-- Mock de datos iniciales -->
+                        <tr class="data-row">
+                            <td>2026-03-31</td>
+                            <td>Carlos Rodríguez</td>
+                            <td>carlosr@email.com</td>
+                            <td>+506 8888 8888</td>
+                            <td>Tatuaje manga estilo japonés</td>
+                            <td><span class="status-badge new">Nuevo</span></td>
+                        </tr>
+                        <tr class="data-row">
+                            <td>2026-03-30</td>
+                            <td>María Solís</td>
+                            <td>maria.solis@email.com</td>
+                            <td>+506 7777 7777</td>
+                            <td>Retrato en blanco y negro</td>
+                            <td><span class="status-badge reviewed">Revisado</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="loader-container" id="loader" style="display: none;">
+                <div class="pulse-loader"><i class="fa-solid fa-cloud-arrow-down fa-bounce"></i> Sincronizando BD...
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+
+</html>
